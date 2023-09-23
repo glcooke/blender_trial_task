@@ -3,8 +3,9 @@ import platform
 
 
 class BlenderTest:
-    def __init__(self, name, blend_file, output_image, output_log):
+    def __init__(self, name, func, blend_file, output_image, output_log):
         self._name = name
+        self._func = func
         self._blend_file = blend_file
         self._output_image = output_image
         self._output_log = output_log
@@ -12,6 +13,12 @@ class BlenderTest:
         self._end = None
         self._duration = None
         self._system = platform.uname()._asdict()
+
+    def get_func(self):
+        return self._func
+
+    def get_name(self):
+        return self._name
 
     def get_output(self):
         return self._output_log
