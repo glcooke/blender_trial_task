@@ -2,7 +2,7 @@ import datetime
 import platform
 
 
-class BlenderTest:
+class Scenario:
     def __init__(self, name, func, blend_file, output_image, output_log):
         self._name = name
         self._func = func
