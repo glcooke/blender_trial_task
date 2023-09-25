@@ -1,11 +1,14 @@
 pipeline {
     agent {
-        label 'agent-name'
+        label 'Blender Node'
     }
     stages {
         stage('Dir cleaning') {
             steps {
-                dir ('D:\\test_results') {
+                script {
+                    def output_path = params.output_path
+                }
+                dir (output_path) {
                     deleteDir()
                 }
             }
@@ -21,7 +24,6 @@ pipeline {
             steps {
                 script {
                     def blender_path = params.blender_path
-                    def output_path = params.output_path
                     def x_resolution = params.x_resolution
                     def y_resolution = params.y_resolution
                 }
