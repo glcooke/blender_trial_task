@@ -18,10 +18,10 @@ pipeline {
                     def x_resolution = params.x_resolution
                     def y_resolution = params.y_resolution
                 }
-                dir (output_path) {
+                dir (output_path.substring(1, output_path.length() - 1)) {
                     deleteDir()
                 }
-                withPythonEnv('D:\\jenkins\\Blender Node\\workspace\\Python310\\python.exe') {
+                withPythonEnv("${WORKSPACE}\\python\\python.exe") {
                     bat '''
                         pip install -r requirements.txt
                         python main.py %blender_path% %output_path% %x_resolution% %y_resolution%
@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Archive') {
             steps {
-                dir('D:\\test_results') {
+                dir(output_path.substring(1, output_path.length() - 1)) {
                     archiveArtifacts artifacts: '**', allowEmptyArchive: true
                 }
             }
