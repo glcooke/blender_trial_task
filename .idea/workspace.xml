@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b638bc73-e16e-4d61-93e1-5943d4c98499" name="Changes" comment="class refactor">
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +41,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature",
     "last_opened_file_path": "C:/Users/Илья/PycharmProjects/blender310"
   }
 }]]></component>
@@ -81,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695472209536</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="script for jenkins testing">
+      <created>1695641460430</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695641460430</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +119,7 @@
     <MESSAGE value="initial skeleton commit" />
     <MESSAGE value="initial skeleton" />
     <MESSAGE value="class refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="class refactor" />
+    <MESSAGE value="script for jenkins testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="script for jenkins testing" />
   </component>
 </project>
