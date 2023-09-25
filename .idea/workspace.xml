@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b638bc73-e16e-4d61-93e1-5943d4c98499" name="Changes" comment="Cleanup">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jenkins.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/jenkins.groovy" afterDir="false" />
+    <list default="true" id="b638bc73-e16e-4d61-93e1-5943d4c98499" name="Changes" comment="Python 3.10">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1695664116602</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Cleanup">
+      <created>1695667426497</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1695667426497</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Python 3.10">
+      <created>1695667521322</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1695667521322</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,6 +187,7 @@
     <MESSAGE value="transition to commandline" />
     <MESSAGE value="Groovy script for jenkins" />
     <MESSAGE value="Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
+    <MESSAGE value="Python 3.10" />
+    <option name="LAST_COMMIT_MESSAGE" value="Python 3.10" />
   </component>
 </project>
