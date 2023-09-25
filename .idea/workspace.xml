@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b638bc73-e16e-4d61-93e1-5943d4c98499" name="Changes" comment="requirements for jenkins">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="b638bc73-e16e-4d61-93e1-5943d4c98499" name="Changes" comment="Cleanup" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +101,28 @@
       <option name="project" value="LOCAL" />
       <updated>1695643283288</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="transition to commandline">
+      <created>1695661517135</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1695661517135</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Groovy script for jenkins">
+      <created>1695662214349</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1695662214349</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Cleanup">
+      <created>1695663744913</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1695663744913</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,6 +154,9 @@
     <MESSAGE value="class refactor" />
     <MESSAGE value="script for jenkins testing" />
     <MESSAGE value="requirements for jenkins" />
-    <option name="LAST_COMMIT_MESSAGE" value="requirements for jenkins" />
+    <MESSAGE value="transition to commandline" />
+    <MESSAGE value="Groovy script for jenkins" />
+    <MESSAGE value="Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
   </component>
 </project>
