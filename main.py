@@ -1,19 +1,20 @@
 import os
+import sys
 import shutil
 from blenderTester import BlenderTester
 from Scenario import Scenario
 
 if __name__ == "__main__":
-    blender_path = "C:/Program Files/Blender Foundation/Blender 3.3/blender.exe"
-    output_path = "D:/test_results"
+    blender_path = sys.argv[1]
+    output_path = sys.argv[2]
     if not os.path.exists(output_path):
         os.makedirs(output_path)
     else:
         shutil.rmtree(output_path)
         os.makedirs(output_path)
 
-    x_resolution = 1920
-    y_resolution = 1080
+    x_resolution = int(sys.argv[3])
+    y_resolution = int(sys.argv[4])
 
     scenarios = [
         Scenario("Scenario 1 - Arbitrary Shapes without Material",
