@@ -3,16 +3,6 @@ pipeline {
         label 'Blender Node'
     }
     stages {
-        stage('Dir cleaning') {
-            steps {
-                script {
-                    def output_path = params.output_path
-                }
-                dir (output_path) {
-                    deleteDir()
-                }
-            }
-        }
         stage('Checkout from GitHub') {
             steps {
                 script {
@@ -24,8 +14,12 @@ pipeline {
             steps {
                 script {
                     def blender_path = params.blender_path
+                    def output_path = params.output_path
                     def x_resolution = params.x_resolution
                     def y_resolution = params.y_resolution
+                }
+                dir (output_path) {
+                    deleteDir()
                 }
                 withPythonEnv('D:\\jenkins\\Blender Node\\workspace\\Python310\\python.exe') {
                     bat '''
