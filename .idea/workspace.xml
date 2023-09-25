@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b638bc73-e16e-4d61-93e1-5943d4c98499" name="Changes" comment="class refactor">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="b638bc73-e16e-4d61-93e1-5943d4c98499" name="Changes" comment="requirements for jenkins">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,8 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature",
-    "last_opened_file_path": "C:/Users/Илья/PycharmProjects/blender310"
+    "last_opened_file_path": "C:/Users/Илья/PycharmProjects/blender310",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -89,7 +90,21 @@
       <option name="project" value="LOCAL" />
       <updated>1695641460430</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="requirements for jenkins">
+      <created>1695643096038</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695643096038</updated>
+    </task>
+    <task id="LOCAL-00007" summary="requirements for jenkins">
+      <created>1695643283288</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1695643283288</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,6 +135,7 @@
     <MESSAGE value="initial skeleton" />
     <MESSAGE value="class refactor" />
     <MESSAGE value="script for jenkins testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="script for jenkins testing" />
+    <MESSAGE value="requirements for jenkins" />
+    <option name="LAST_COMMIT_MESSAGE" value="requirements for jenkins" />
   </component>
 </project>
