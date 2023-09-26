@@ -6,7 +6,8 @@ import random
 import math
 from functools import wraps
 
-#constant definition
+
+# Constant definition
 LIGHT_COLOR = (0.151736, 0.0997155, 1, 1)
 LIGHT_STRENGTH = 10
 PROBABILITY = 0.3
