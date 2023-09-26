@@ -1,8 +1,8 @@
 import os
 import sys
 import shutil
-from blenderTester import BlenderTester
-from Scenario import Scenario
+from blender_tester import BlenderTester
+from scenario import Scenario
 
 if __name__ == "__main__":
     # Get the Blender executable path, output path, and resolution from command line arguments.

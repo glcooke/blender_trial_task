@@ -50,6 +50,7 @@ def cleanup():
 class BlenderTester:
     def __init__(self, blender_path_, output_path_, x_resolution_, y_resolution_):
         self.blender_path = blender_path_
+        bpy.app.binary_path = self.blender_path
         self.output_path = output_path_
         self.x_resolution = x_resolution_
         self.y_resolution = y_resolution_
