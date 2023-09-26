@@ -24,7 +24,6 @@ pipeline {
                 withPythonEnv("${WORKSPACE}\\python\\python.exe") {
                     bat '''
                         pip install -r requirements.txt
-                        cd test
                         python main.py %blender_path% %output_path% %x_resolution% %y_resolution%
                     '''
 

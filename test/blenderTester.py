@@ -6,8 +6,14 @@ import random
 import math
 from functools import wraps
 
+#constant definition
+LIGHT_COLOR = (0.151736, 0.0997155, 1, 1)
+LIGHT_STRENGTH = 10
+PROBABILITY = 0.3
+VERTICES_AMOUNT = 12
 
-# Wrapper
+
+# Wrapper for timings and success messages
 def test_func(func):
     @wraps(func)
     def timeit_wrapper(*args, **kwargs):
@@ -31,6 +37,7 @@ def test_func(func):
     return timeit_wrapper
 
 
+# Reset the scene and remove THE CUBE
 def cleanup():
     bpy.ops.wm.read_factory_settings()
     if "Cube" in bpy.data.objects:
@@ -47,6 +54,7 @@ class BlenderTester:
         self.x_resolution = x_resolution_
         self.y_resolution = y_resolution_
 
+    # Run scenario and output JSON dump
     def run_tests(self, scenarios_):
         for scenario in scenarios_:
             fn = getattr(self, scenario.get_func())
@@ -58,15 +66,14 @@ class BlenderTester:
             with open(os.path.join(self.output_path + '/' + scenario.get_name(), f"test_info.json"), "w") as json_file:
                 json.dump(scenario.get_json(), json_file, indent=4)
 
-    # Functions to create shapes
-    @test_func
-    def test_arbitrary_shapes(self, scenario):
-        cleanup()
+    # Creating shapes
+    @staticmethod
+    def circle_shapes(amount):
+        # Creating shapes in circle
+        vertices = amount
+        angle_step = math.tau / vertices
 
-        verts = 12
-        angle_step = math.tau / verts
-
-        for i in range(verts):
+        for i in range(vertices):
             cur_angle = i * angle_step
 
             x = math.cos(cur_angle)
@@ -83,79 +90,9 @@ class BlenderTester:
                 case 4:
                     bpy.ops.mesh.primitive_monkey_add(location=(x, y, 0), size=0.3)
 
-        self.render_scene(scenario)
-
-    @test_func
-    def test_materials(self, scenario):
-        cleanup()
-        verts = 12
-        angle_step = math.tau / verts
-
-        for i in range(verts):
-            cur_angle = i * angle_step
-
-            x = math.cos(cur_angle)
-            y = math.sin(cur_angle)
-
-            random_number = random.randint(1, 4)
-            match random_number:
-                case 1:
-                    bpy.ops.mesh.primitive_ico_sphere_add(location=(x, y, 0), radius=0.15)
-                case 2:
-                    bpy.ops.mesh.primitive_cylinder_add(location=(x, y, 0), radius=0.15, depth=0.2)
-                case 3:
-                    bpy.ops.mesh.primitive_cube_add(location=(x, y, 0), size=0.2)
-                case 4:
-                    bpy.ops.mesh.primitive_monkey_add(location=(x, y, 0), size=0.3)
-
-        for obj in bpy.context.scene.objects:
-            if obj.type == 'MESH':
-                mat = bpy.data.materials.new(name="Material")
-                mat.use_nodes = True
-                node_tree = mat.node_tree
-                nodes = node_tree.nodes
-                bsdf = nodes.get("Principled BSDF")
-                bsdf.inputs['Base Color'].default_value = (random.uniform(0, 1),
-                                                           random.uniform(0, 1),
-                                                           random.uniform(0, 1),
-                                                           1)
-                obj.data.materials.append(mat)
-
-        self.render_scene(scenario)
-
-    @test_func
-    def test_light_source(self, scenario):
-        cleanup()
-
-        scene = bpy.context.scene
-
-        # Remove default light source
-        for obj in scene.objects:
-            if obj.type == 'LIGHT':
-                bpy.data.objects.remove(obj, do_unlink=True)
-
-        verts = 12
-        angle_step = math.tau / verts
-        bpy.context.scene.render.engine = 'CYCLES'
-        bpy.context.scene.eevee.use_bloom = True
-
-        for i in range(verts):
-            cur_angle = i * angle_step
-
-            x = math.cos(cur_angle)
-            y = math.sin(cur_angle)
-
-            random_number = random.randint(1, 4)
-            match random_number:
-                case 1:
-                    bpy.ops.mesh.primitive_ico_sphere_add(location=(x, y, 0), radius=0.15)
-                case 2:
-                    bpy.ops.mesh.primitive_cylinder_add(location=(x, y, 0), radius=0.15, depth=0.2)
-                case 3:
-                    bpy.ops.mesh.primitive_cube_add(location=(x, y, 0), size=0.2)
-                case 4:
-                    bpy.ops.mesh.primitive_monkey_add(location=(x, y, 0), size=0.3)
-
+    # Creating material
+    @staticmethod
+    def create_material():
         for obj in bpy.context.scene.objects:
             if obj.type == 'MESH':
                 mat = bpy.data.materials.new(name="Material")
@@ -171,13 +108,16 @@ class BlenderTester:
                 bsdf.inputs["Roughness"].default_value = 0.2
                 obj.data.materials.append(mat)
 
+    # Creating glowing material
+    @staticmethod
+    def create_glowing_material(prob):
         glow_material = bpy.data.materials.new(name="GlowMaterial")
         glow_material.use_nodes = True
         node_tree = glow_material.node_tree
         bpy.data.materials["GlowMaterial"].node_tree.nodes.clear()
         emission_node = node_tree.nodes.new(type='ShaderNodeEmission')
-        emission_node.inputs["Color"].default_value = (0.151736, 0.0997155, 1, 1)
-        emission_node.inputs["Strength"].default_value = 10.0
+        emission_node.inputs["Color"].default_value = LIGHT_COLOR
+        emission_node.inputs["Strength"].default_value = LIGHT_STRENGTH
         material_output_node = node_tree.nodes.new(type='ShaderNodeOutputMaterial')
         node_tree.links.new(
             glow_material.node_tree.nodes["Emission"].outputs[0],
@@ -185,8 +125,58 @@ class BlenderTester:
         )
         for obj in bpy.context.scene.objects:
             if obj.type == 'MESH':
-                if random.uniform(0, 1) < 0.3:
+                if random.uniform(0, 1) < prob:
                     obj.data.materials[0] = glow_material
+
+    # Testing shapes
+    @test_func
+    def test_arbitrary_shapes(self, scenario):
+        cleanup()
+
+        # Use cycles engine to render
+        bpy.context.scene.render.engine = 'CYCLES'
+        bpy.context.scene.eevee.use_bloom = True
+
+        self.circle_shapes(VERTICES_AMOUNT)
+
+        self.render_scene(scenario)
+
+    # Testing objects with material
+    @test_func
+    def test_materials(self, scenario):
+        cleanup()
+
+        # Use cycles engine to render
+        bpy.context.scene.render.engine = 'CYCLES'
+        bpy.context.scene.eevee.use_bloom = True
+
+        self.circle_shapes(VERTICES_AMOUNT)
+
+        self.create_material()
+
+        self.render_scene(scenario)
+
+    # Testing light sources
+    @test_func
+    def test_light_source(self, scenario):
+        cleanup()
+
+        scene = bpy.context.scene
+
+        # Remove default light source
+        for obj in scene.objects:
+            if obj.type == 'LIGHT':
+                bpy.data.objects.remove(obj, do_unlink=True)
+
+        # Use cycles engine to render
+        bpy.context.scene.render.engine = 'CYCLES'
+        bpy.context.scene.eevee.use_bloom = True
+
+        self.circle_shapes(VERTICES_AMOUNT)
+
+        self.create_material()
+
+        self.create_glowing_material(PROBABILITY)
 
         self.render_scene(scenario)
 
